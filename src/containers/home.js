@@ -4,20 +4,31 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import store from '../store'
 import { setName } from '../reducer/redirect'
+import { Redirect } from 'react-router-dom'
 
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  setName,
-  changePage: () => push('/about-us')
+// const mapDispatchToProps = dispatch => bindActionCreators({
+//   setName,
+//   changePage: () => push('/about-us')
 
-}, dispatch)
+// }, dispatch)
 
-const mapStateToProps = state => {
-  return {
+// const mapStateToProps = state => {
+//   return {
 
-  };
+//   };
+// }
+
+function mapDispatchToProps(dispatch){
+    return{
+        setName: name => dispatch(setName(name))
+    }
 }
-
+const mapStateToProps = state =>{
+    return{
+        state: state
+    }
+}
 
 
 class Home extends React.Component{
@@ -27,7 +38,7 @@ class Home extends React.Component{
           name: '',
           isValue: false,
           isValid: false,
-          firstPage: false,
+          isValidHome: false,
           error: 'eg. Prakash Gharti'
       };
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,6 +54,7 @@ class Home extends React.Component{
           if(isNameValid){
               this.setState({isValid: true});
               this.setState({firstPage: true});
+              this.props.setName(this.state.name);
               store.dispatch(push('/more'));
           }
           else{
@@ -61,13 +73,13 @@ class Home extends React.Component{
       // if(this.state.isValue && this.state.isValid){
       //     return this.state.changePage()
       // }
+      console.log(this.state);
+
       return (
           <div>
-              <form onSubmit={this.handleSubmit}>
               <input name="name" value={this.state.name} onChange={this.handleChange}></input>
-              <labe>{this.state.error}</labe>
-              <button type="submit">Continue</button>
-              </form>
+              <label>{this.state.error}</label>
+              <button onClick={this.handleSubmit}>Continue</button>
           </div>
       );
   }

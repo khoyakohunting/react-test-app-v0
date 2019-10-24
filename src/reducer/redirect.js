@@ -8,20 +8,28 @@ const initialState = {
   
   export default (state = initialState, action) => {
     switch (action.type) {
-        case HOME_PAGE_SUBMITED:
-          return {
-            ...state
-          }
-
-        default:
-            return state
+      case HOME_PAGE_SUBMITED:
+        return{
+          ...state,
+          name: action.payload.name,
+          isValidHome: true
+        }
+      default:
+        return state
+    }
   }
-}
-
-export const setName = (payload) => {
+  
+  export const setName = (name) => {
     return dispatch => {
       dispatch({
-        type: HOME_PAGE_SUBMITED, name:payload.name
+        type: HOME_PAGE_SUBMITED, payload: {name}
+      })
+    }
+  }
+  export const setDetails = (name) => {
+    return dispatch => {
+      dispatch({
+        type: HOME_PAGE_SUBMITED, payload: {name}
       })
     }
   }
