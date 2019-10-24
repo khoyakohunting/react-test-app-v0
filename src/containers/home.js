@@ -73,13 +73,19 @@ class Home extends React.Component{
       // if(this.state.isValue && this.state.isValid){
       //     return this.state.changePage()
       // }
-      console.log(this.state);
 
       return (
           <div>
-              <input name="name" value={this.state.name} onChange={this.handleChange}></input>
-              <label>{this.state.error}</label>
-              <button onClick={this.handleSubmit}>Continue</button>
+              <label className="label">Your Name</label>
+
+              <div className="form-group">
+                  <p>
+                    <input className="input rounded" placeholder="Please enter your name" name="name" value={this.state.name} onChange={this.handleChange}></input>
+
+                  </p>
+              <a className="button rounded" onClick={this.handleSubmit}>Continue</a> 
+              </div>             
+              <label className="error_message">{this.state.error}</label>
           </div>
       );
   }

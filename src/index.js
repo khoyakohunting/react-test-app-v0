@@ -11,8 +11,10 @@ ReactDOM.render(
 
     <Provider store={store}>
     <ConnectedRouter history={history}>
-        <div>
+        <div className="container">
+        <div className="content">
         <App />
+        </div>
         </div>
 
         </ConnectedRouter>

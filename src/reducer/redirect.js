@@ -1,4 +1,4 @@
-import { HOME_PAGE_SUBMITED } from '../constants/action-type';
+import { HOME_PAGE_SUBMITED, MORE_PAGE_SUBMITTED } from '../constants/action-type';
 
 const initialState = {
     name:'',
@@ -14,6 +14,12 @@ const initialState = {
           name: action.payload.name,
           isValidHome: true
         }
+      case MORE_PAGE_SUBMITTED:
+        return{
+          ...state,
+          phone: action.payload.phone,
+          email: action.payload.email
+        }
       default:
         return state
     }
@@ -26,10 +32,11 @@ const initialState = {
       })
     }
   }
-  export const setDetails = (name) => {
+  export const setDetails = (phone, email) => {
+    console.log(phone);
     return dispatch => {
       dispatch({
-        type: HOME_PAGE_SUBMITED, payload: {name}
+        type: MORE_PAGE_SUBMITTED, payload: {phone, email}
       })
     }
   }

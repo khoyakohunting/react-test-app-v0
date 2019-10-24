@@ -6,8 +6,101 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+body{
+  background-image: url('assets/bg.jpg');
+  background-size: cover;
+}
+.input{
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  background: white;
+  font-weight: 300;
+}
+.input.rounded{
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+
+  height: 24px;
+}
+.input:focus{
+  box-shadow: none;
+  border: none;
+  outline: none;
+}
+.button{
+  font-size: 14px;
+  padding: 10px 20px;
+  background: #cb2c2d;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 26px;
+  cursor: pointer;
+  transition: 0.5s ease all;
+
+  
+}
+.button:hover{
+  background: purple;
+}
+.button.rounded{
+  border: none;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  height: 24px;
+}
+body::before{
+  content: "";
+  background:#03222b;
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; 
+  z-index: -1;
+}
+.container{
+  display: flex;
+  align-items: center!important;
+  height: 100vh;
+  justify-content: center!important;
+}
+.content{
+
+}
+.form-group{
+  display: flex;
+  align-items: center;
+}
+.error_message{
+  color: #00d0ff;
+    padding: 15px 0px;
+    display: block;
+}
+.circular{
+  border-radius: 20px;
+  padding: 10px 50px;
+}
+.input.circular{
+  padding: 10px 20px;
+  width: 400px;
+}
+.multi-input{
+  text-align: center;
+}
+.label{
+  color: white;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+}
+.form-group-label{
+  text-align: left;
 }
