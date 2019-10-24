@@ -73,9 +73,11 @@ class Home extends React.Component{
       // if(this.state.isValue && this.state.isValid){
       //     return this.state.changePage()
       // }
+      console.log(this.props)
 
       return (
           <div>
+            <div className="page_error">{this.props.state.redirect.pageError}</div>
               <label className="label">Your Name</label>
 
               <div className="form-group">

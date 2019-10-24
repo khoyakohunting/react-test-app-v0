@@ -104,3 +104,20 @@ body::before{
 .form-group-label{
   text-align: left;
 }
+.card{
+  background: white;
+    padding: 20px;
+    border-radius: 5px;
+  text-align: center;
+    -webkit-box-shadow: -2px -2px 35px 6px rgba(255,255,255,0.2);
+    -moz-box-shadow: -2px -2px 35px 6px rgba(255,255,255,0.2);
+}
+h2{
+  margin-top: 0px;
+  text-transform: uppercase;
+}
+.page_error{
+  color: red;
+  text-align: left;
+  padding: 40px 0px;
+}

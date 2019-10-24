@@ -1,10 +1,10 @@
 import React from 'react'
 import { push } from 'connected-react-router'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import store from '../store'
-import { setName } from '../reducer/redirect'
+import { resetState, setPageError } from '../reducer/redirect'
 import { Redirect } from 'react-router-dom'
+import store from "../store";
+
 
 
 
@@ -22,7 +22,9 @@ import { Redirect } from 'react-router-dom'
 
 function mapDispatchToProps(dispatch){
     return{
-        setName: name => dispatch(setName(name))
+        resetState: name => dispatch(resetState()),
+    setPageError: (message) => dispatch(setPageError(message))
+
     }
 }
 const mapStateToProps = state =>{
@@ -36,53 +38,60 @@ class More extends React.Component{
   constructor(props){
       super(props);
       this.state = props;
-      this.handleSubmit = this.handleSubmit.bind(this);
-      this.handleChange = this.handleChange.bind(this);
-  }
-  handleSubmit(event){
-      // var isNameValid = this.state.name.match(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/);
-      var isNameValid = this.state.name.match(/^[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}$/);
+      this.startTimer = this.startTimer.bind(this);
+    this.handlePageError = this.handlePageError.bind(this);
 
-      if(this.state.name){
-          this.setState({isValue: true});
-          // alert('A name entered is:' + this.state.name);
-          if(isNameValid){
-              this.setState({isValid: true});
-              this.setState({firstPage: true});
-              this.props.setName(this.state.name);
-          }
-          else{
-              this.setState({error: 'Please Enter valid name'});
-          }
-      }
-      else{
-          this.setState({error: 'You must enter name to continue'});
-      }
+    //   this.countDown = this.countDown.bind(this);
+      
+  }
+
+  startTimer(event){
+      if(!this.state.secondsLeft){
+        this.setState({
+            secondsLeft: 10
+          });
+      
+      this.incrementer = setInterval(() => {
+        this.setState({
+          secondsLeft: (this.state.secondsLeft - 1)
+        });
+        if (this.state.secondsLeft === 0) {
+          clearInterval(this.incrementer);
+                  this.props.resetState()
+        store.dispatch(push('/'));
+        }
+      }, 1000);
       event.preventDefault();
+    }
   }
-  handleChange(event){
-      this.setState({name: event.target.value});
-  }
+  handlePageError(message){
+    this.props.setPageError(message)
+}
+
   render(){
-      // if(this.state.isValue && this.state.isValid){
-      //     return this.state.changePage()
-      // }
-      console.log(this.state.state.redirect.isValidHome);
-      if(this.state.state.redirect.isValidMore){
+      
         if(!this.state.state.redirect.isValidMore){
+        this.handlePageError('Opps! You missed More Info page')
           return <Redirect to='/more' />
         }
-      }
-      else{
-        return <Redirect to='/' />
-      }
-      
+
       return (
           <div>
-              <input name="name" value={this.state.name} onChange={this.handleChange}></input>
-              <input name="email" value={this.state.email} onChange={this.handleChange}></input>
-              <label>{this.state.error}</label>
-              <button onClick={this.handleSubmit}>Continue</button>
+              <div className="card">
+                  <p>
+                      <label>Full Name</label>
+                      <h2>{this.state.state.redirect.name}</h2>
+                  </p>
+                  <p>
+                      <label>Mobile Number</label>
+                      <h2>{this.state.state.redirect.phone}</h2>
+                  </p>
+                  <p>
+                      <label>Email Address</label>
+                      <h2>{this.state.state.redirect.email}</h2>
+                  </p>
+                <a className="button circular" onClick={this.startTimer}>{this.state.secondsLeft} {this.state.secondsLeft>0 ? 'Seconds To Finish' : 'Finish'}</a>
+              </div>
           </div>
       );
   }

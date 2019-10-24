@@ -8,9 +8,9 @@ function App() {
   return (
     <div>
     <header>
-      <Link to="/">Home</Link>
+      {/* <Link to="/">Home</Link>
       <Link to="/more">More</Link>
-      <Link to="/final">Final</Link>
+      <Link to="/final">Final</Link> */}
 
     </header>
 

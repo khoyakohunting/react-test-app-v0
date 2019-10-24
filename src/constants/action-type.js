@@ -5,3 +5,5 @@ export const DECREMENT = 'counter/DECREMENT'
 
 export const HOME_PAGE_SUBMITED = 'HOME_PAGE_SUBMITED'
 export const MORE_PAGE_SUBMITTED = 'MORE_PAGE_SUBMITTED'
+export const INITIAL_STATE = 'INITIAL_STATE'
+export const PAGE_ERROR = 'PAGE_ERROR'
