@@ -34,7 +34,7 @@ const initialState = {
         }
       case INITIAL_STATE:
         return{
-          initialState
+          ...initialState
         }
       default:
         return state
