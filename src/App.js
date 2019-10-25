@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Home from './containers/home';
 import More from './containers/more';
 import Final from './containers/final';

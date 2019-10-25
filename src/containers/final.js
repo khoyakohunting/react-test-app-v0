@@ -78,19 +78,19 @@ class More extends React.Component{
       return (
           <div>
               <div className="card">
-                  <p>
+                  <div>
                       <label>Full Name</label>
                       <h2>{this.state.state.redirect.name}</h2>
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                       <label>Mobile Number</label>
                       <h2>{this.state.state.redirect.phone}</h2>
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                       <label>Email Address</label>
                       <h2>{this.state.state.redirect.email}</h2>
-                  </p>
-                <a className="button circular" onClick={this.startTimer}>{this.state.secondsLeft} {this.state.secondsLeft>0 ? 'Seconds To Finish' : 'Finish'}</a>
+                  </div>
+                <span className="button circular" onClick={this.startTimer}>{this.state.secondsLeft} {this.state.secondsLeft>0 ? 'Seconds To Finish' : 'Finish'}</span>
               </div>
           </div>
       );

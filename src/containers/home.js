@@ -1,10 +1,10 @@
 import React from 'react'
 import { push } from 'connected-react-router'
-import { bindActionCreators } from 'redux'
+// import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import store from '../store'
 import { setName } from '../reducer/redirect'
-import { Redirect } from 'react-router-dom'
+// import { Redirect } from 'react-router-dom'
 
 
 // const mapDispatchToProps = dispatch => bindActionCreators({
@@ -73,7 +73,7 @@ class Home extends React.Component{
       // if(this.state.isValue && this.state.isValid){
       //     return this.state.changePage()
       // }
-      console.log(this.props)
+      // console.log(this.props)
 
       return (
           <div>
@@ -85,7 +85,7 @@ class Home extends React.Component{
                     <input className="input rounded" placeholder="Please enter your name" name="name" value={this.state.name} onChange={this.handleChange}></input>
 
                   </p>
-              <a className="button rounded" onClick={this.handleSubmit}>Continue</a> 
+              <span className="button rounded" onClick={this.handleSubmit}>Continue</span> 
               </div>             
               <label className="error_message">{this.state.error}</label>
           </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { push } from "connected-react-router";
-import { bindActionCreators } from "redux";
+// import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import store from "../store";
 import { setDetails, setPageError } from "../reducer/redirect";
@@ -120,9 +120,9 @@ class More extends React.Component {
         </div>
         
         <label className="error_message">{this.state.email_error}</label>
-        <a className="button circular" onClick={this.handleSubmit}>
+        <span className="button circular" onClick={this.handleSubmit}>
           Done
-        </a>
+        </span>
       </div>
     );
   }
